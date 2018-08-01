@@ -23,33 +23,26 @@ bool checkEdges(int r, int c, vector <string> board, int radius){
          leftBound  = ((c - radius >= 0)?         c - radius : 0),
          rightBound = ((c + radius < maxColumns)? c + radius : maxColumns - 1);
     
-    /*cout << "r "     << r          << endl
-         << "c "     << c          << endl
-         << "up "    << upBound    << endl
-         << "down "  << downBound  << endl
-         << "left "  << leftBound  << endl
-         << "right " << rightBound << endl;*/
-    
     // Top Row
-    if(upBound < r){ //cout <<1<<endl;
+    if(upBound < r){ 
         for(int i = leftBound; i<= rightBound; i++)
             if(board[upBound][i] == 'd'){saveMoves(r - upBound, i - c);return true;}
     }
     
     // Left Side
-    if(leftBound < c){ //cout <<2<<endl;
+    if(leftBound < c){ 
         for(int i = upBound; i <= downBound; i++)
             if(board[i][leftBound] == 'd'){saveMoves(r - i, leftBound - c);return true;}
     }
     
     // Right Side
-    if(rightBound > c){ //cout <<3<<endl;
+    if(rightBound > c){ 
         for(int i = upBound; i <= downBound; i++)
             if(board[i][rightBound] == 'd'){saveMoves(r - i, rightBound - c);return true;}
     }
     
     // Bottom Row
-    if(downBound > r){ //cout <<4<<endl;
+    if(downBound > r){ 
         for(int i = leftBound; i <= rightBound; i++)
             if(board[downBound][i] == 'd'){saveMoves(r - downBound, i - c);return true;}
     }
