@@ -24,28 +24,24 @@ bool checkEdges(int r, int c, vector <string> board, int radius){
          rightBound = ((c + radius < maxColumns)? c + radius : maxColumns - 1);
     
     // Top Row
-    if(upBound < r){ 
+    if(upBound < r)
         for(int i = leftBound; i<= rightBound; i++)
             if(board[upBound][i] == 'd'){saveMoves(r - upBound, i - c);return true;}
-    }
     
     // Left Side
-    if(leftBound < c){ 
+    if(leftBound < c)
         for(int i = upBound; i <= downBound; i++)
             if(board[i][leftBound] == 'd'){saveMoves(r - i, leftBound - c);return true;}
-    }
     
     // Right Side
-    if(rightBound > c){ 
+    if(rightBound > c)
         for(int i = upBound; i <= downBound; i++)
             if(board[i][rightBound] == 'd'){saveMoves(r - i, rightBound - c);return true;}
-    }
     
     // Bottom Row
-    if(downBound > r){ 
+    if(downBound > r)
         for(int i = leftBound; i <= rightBound; i++)
             if(board[downBound][i] == 'd'){saveMoves(r - downBound, i - c);return true;}
-    }
     
     return false;
     
@@ -83,16 +79,11 @@ void findNextMoveBFS(int r, int c, vector <string> board){
         DDDDD
     
      */
-    int radius = 1, row_pos, col_pos;
-    
-    bool upBound, leftBound, rightBound, downBound;
+    int radius = 1;
     
     while(radius < maxRows || radius < maxColumns){
         
-        if(checkEdges(r, c, board, radius)) 
-            break;
-        
-        //cout << 1 << endl;
+        if(checkEdges(r, c, board, radius)) break;
         
         radius++;
     }
